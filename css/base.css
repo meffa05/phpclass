@@ -1,6 +1,6 @@
 /*website style*/
 header{
-width:100%;
+    width:100%;
     float:left;
     font-family: Cambria, serif;
     text-align: center;
@@ -17,7 +17,7 @@ main{
 
 }
 main img{
-width:200px;
+    width:200px;
     display: block;
     margin:0 auto;
 }
