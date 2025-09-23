@@ -22,7 +22,7 @@ $responses = [
     "As I see it, yes",
     "Don't bet on it"
 ];
-$answer = "Ask me a question.";
+$answer = 'Ask me a question.';
 $question = trim($_POST['question'] ?? '');
 if($question != ''){
     if(substr($question, -1) != '?'){
