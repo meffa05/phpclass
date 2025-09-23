@@ -28,7 +28,7 @@ if($question != ''){
     if(substr($question, -1) != '?'){
         $answer = "Question must end with a question mark. Try Again.";
     }
-    else if($question ==$_SESSION['question']){
+    else if($question == $_SESSION['question']){
     $answer = "Ask a different question";
     }
     else {
@@ -57,11 +57,12 @@ if($question != ''){
 </nav>
 <main>
 <h2>Magic 8 Ball</h2>
-    <p class="answer"><?=$answer?></p>
-    <form method="post"></form>
+    <p class="answer" ><?=$answer?></p>
+    <form method="post">
     <label for="question">Question:</label>
     <input type="text" name="question" id="question" value="<?=$question?>">
     <input type="submit" value="Ask the Magic 8 Ball">
+    </form>
 </main>
 <footer>
     <?php include '../includes/footer.php';?>
