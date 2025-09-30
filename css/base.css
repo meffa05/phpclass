@@ -60,3 +60,9 @@ li{
 li:last-child{
     border-bottom: none;
 }
+#movies{
+    border: 1px solid black;
+    width: 80%;
+    margin: 10px auto;
+
+}
