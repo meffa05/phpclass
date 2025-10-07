@@ -2,8 +2,8 @@
     if(!empty($_GET["txtTitle"]) && !empty($_GET["txtRating"])){
         include "../includes/db.php";
         $con=getDBconnection();
-$txtTitle = $_GET["txtTitle"];
-        $txtTRating= $_GET["txtRating"];
+        $txtTitle = $_GET["txtTitle"];
+        $txtRating= $_GET["txtRating"];
 
         try {
 
@@ -12,7 +12,7 @@ $txtTitle = $_GET["txtTitle"];
             mysqli_stmt_bind_param($stmt, "ss", $txtTitle, $txtRating);
             mysqli_stmt_execute($stmt);
 
-            header("location:index.php");//will not work if and info has been sent back to the user
+            header("Location:index.php");//will not work if and info has been sent back to the user
         }
         catch(mysqli_sql_exception $ex){
             echo $ex;
@@ -65,7 +65,7 @@ $txtTitle = $_GET["txtTitle"];
                 <label for="txtTitle">Movie Title</label>
             </div>
             <div class="title-input">
-                <input type="text" name="txtTile" id="txtTitle">
+                <input type="text" name="txtTitle" id="txtTitle">
             </div>
 
             <div class="movie-rating">

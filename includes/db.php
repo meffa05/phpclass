@@ -5,6 +5,6 @@ function getDBconnection()
     $user = "dbuser";
     $pass ="dbdev123";
     $database = "phpclass";
-   return mysqli_connect($host, $user, $pass,$database);
+   return mysqli_connect($host, $user, $pass, $database);
 }
 
