@@ -1,0 +1,88 @@
+<?php
+    if(!empty($_GET["txtTitle"]) && !empty($_GET["txtRating"])){
+        include "../includes/db.php";
+        $con=getDBconnection();
+$txtTitle = $_GET["txtTitle"];
+        $txtTRating= $_GET["txtRating"];
+
+        try {
+
+            $query = "INSERT INTO movielist ( MovieTitle, MovieRating) VALUES (?,?);";
+            $stmt = mysqli_prepare($con, $query);
+            mysqli_stmt_bind_param($stmt, "ss", $txtTitle, $txtRating);
+            mysqli_stmt_execute($stmt);
+
+            header("location:index.php");//will not work if and info has been sent back to the user
+        }
+        catch(mysqli_sql_exception $ex){
+            echo $ex;
+        }
+    }
+
+?><!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maddie's Site</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <style>
+        .grid-header{grid-area: grid-header;}
+        .movie-title{grid-area: movie-title;}
+        .title-input{grid-area: title-input;}
+        .movie-rating{grid-area: movie-rating;}
+        .rating-input{grid-area: rating-input;}
+        .grid-footer{grid-area: grid-footer;}
+        .grid-container{
+            display:grid;
+            grid-template-areas:
+'grid-header  grid-header'
+            'movie-title title-input'
+            'movie-rating rating-input'
+            'grid-footer grid-footer';
+            border: 1px solid black;
+            text-align: center;
+        }
+        .grid-container >div{border: 1px solid black; text-align: center}
+        .grid-container input[type ="text"]{width:98%; margin:  2px 0;}
+    </style>
+</head>
+<body>
+<header><?php include '../includes/header.php';?></header>
+<nav>
+    <?php include '../includes/nav.php';?>
+</nav>
+<main>
+    <form method="GET">
+        <div class="grid-container">
+            <div class="grid-header">
+                <h3>Add new movie</h3>
+            </div>
+
+            <div class="movie-title">
+                <label for="txtTitle">Movie Title</label>
+            </div>
+            <div class="title-input">
+                <input type="text" name="txtTile" id="txtTitle">
+            </div>
+
+            <div class="movie-rating">
+                <label for="txtRating">Rating</label>
+            </div>
+            <div class="rating-input">
+                <input type="text" name="txtRating" id="txtRating">
+            </div>
+
+            <div class="grid-footer">
+                <input type="submit" value="Add Movie">
+            </div>
+        </div>
+    </form>
+</main>
+<footer>
+    <?php include '../includes/footer.php';?>
+</footer>
+</body>
+</html>

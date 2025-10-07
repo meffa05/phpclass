@@ -41,8 +41,8 @@
         </tr>
 
 <?php
-$con =mysqli_connect('localhost', "dbuser", "dbdev123");
-mysqli_select_db($con,"phpclass");
+include"../includes/db.php";
+$con = getDBconnection();
 $result =mysqli_query($con, "SELECT * FROM movielist");
 
 while($row = mysqli_fetch_array($result)){
@@ -58,6 +58,7 @@ while($row = mysqli_fetch_array($result)){
 }
 ?>
     </table>
+    <a href="addmovie.php">Add a new movie</a>
 </main>
 <footer>
     <?php include '../includes/footer.php';?>
