@@ -5,6 +5,7 @@ $iscountdown = $_SERVER['REQUEST_URL'] =='/countdown/' ? 'selected' : '';
 $isMagic8Ball = $_SERVER['REQUEST_URL'] =='/Magic8Ball/' ? 'selected' : '';
 $ismovielist = $_SERVER['REQUEST_URL'] =='/movielist/' ? 'selected' : '';
 $iscustlist = $_SERVER['REQUEST_URL'] =='/custlist/' ? 'selected' : '';
+$isendofsemester = $_SERVER['REQUEST_URL'] =='/endofsemester/' ? 'selected' : '';
 ?>
 <ul>
     <li><a href="/index.php">Home</a></li>
@@ -13,4 +14,5 @@ $iscustlist = $_SERVER['REQUEST_URL'] =='/custlist/' ? 'selected' : '';
     <li><a href="/Magic8Ball">Magic 8 Ball</a><?=$isMagic8Ball?></li>
     <li><a href="/movielist">Movie List</a><?=$ismovielist?></li>
     <li><a href="/custlist">Customer List</a><?=$iscustlist?></li>
+    <li><a href="/endofsemester">End Of Semester Countdown</a><?=$isendofsemester?></li>
 </ul>
