@@ -7,24 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Maddie's Site</title>
     <link rel="stylesheet" type="text/css" href="/css/base.css">
-    <style>
-        table{
-            border: 1px solid black;
-            width: 80%;
-            margin: 10px auto;
-            table-layout: fixed;
+    <link rel="stylesheet" href="/cssstyle/grid.css">
 
-        }
-        th,td{
-            border: 1px solid black;
-            padding:.2rem;
-            text-align: center;
-
-        }
-        h2{
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 <header><?php include '../includes/header.php';?></header>
@@ -33,7 +17,7 @@
 </nav>
 <main>
 <h2>My Movie List</h2>
-    <table id="movies">
+    <table class="movies">
         <tr>
             <th>ID</th>
             <th>Title</th>
@@ -51,8 +35,10 @@ while($row = mysqli_fetch_array($result)){
     $movieTitle = $row["MovieTitle"];
     $movieRating = $row["MovieRating"];
     echo "<tr>";
-    echo "       <td>$movieID</td>";
-    echo "        <td>$movieTitle</td>";
+    echo "   <td>$movieID</td>";
+    echo "   <td>";
+    echo "        <a href=\"movie.php?id=$movieID\">$movieTitle</a>";
+    echo "</td>";
    echo "         <td>$movieRating</td>";
    echo " </tr>";
 }

@@ -1,26 +1,44 @@
 <?php
-    $errorMessage="";
-    if(!empty($_POST["txtTitle"]) && !empty($_POST["txtRating"])){
-        include "../includes/db.php";
-        $con=getDBconnection();
-        $txtTitle = $_POST["txtTitle"];
-        $txtRating= $_POST["txtRating"];
+//do not have any spaces
+if(empty($_GET["id"]))
+{
+    header("Location: /movielist");
+}
+include "../includes/db.php";
+$con=getDBconnection();
+$movieID=$_GET["id"];
+try {
 
-        try {
+    $query = "SELECT * from movielist where MovieID =?";
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "s", $movieID);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_array($result);
 
-            $query = "INSERT INTO movielist ( MovieTitle, MovieRating) VALUES (?,?);";
-            $stmt = mysqli_prepare($con, $query);
-            mysqli_stmt_bind_param($stmt, "ss", $txtTitle, $txtRating);
-            mysqli_stmt_execute($stmt);
+    $movieTitle = $row["MovieTitle"];
+    $movieRating =$row["MovieRating"];
+}
+catch(mysqli_sql_exception $ex){
+    echo $ex;
+}
+//do the update (update the db)
+if(!empty($_POST["txtTitle"]) && !empty($_POST["txtRating"])){
+    $txtTitle = $_POST["txtTitle"];
+    $txtRating= $_POST["txtRating"];
+    try {
 
-            header("Location: /movielist");//will not work if and info has been sent back to the user
-        }
-        catch(mysqli_sql_exception $ex){
-            //echo $ex;
-            $errorMessage =$ex;
-        }
+        $query = "UPDATE movielist SET MovieTitle = ?, MovieRating = ? where MovieID = ?;";
+        $stmt = mysqli_prepare($con, $query);
+        mysqli_stmt_bind_param($stmt, "sss", $txtTitle, $txtRating, $movieID);
+        mysqli_stmt_execute($stmt);
+
+        header("Location: /movielist");//will not work if and info has been sent back to the user
     }
-
+    catch(mysqli_sql_exception $ex){
+        echo $ex;
+    }
+}
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -30,29 +48,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Maddie's Site</title>
     <link rel="stylesheet" type="text/css" href="/css/base.css">
-    <link rel="stylesheet" href="/cssstyle/grid.css">
+
     <style>
         .grid-header{grid-area: grid-header;}
         .movie-title{grid-area: movie-title;}
         .title-input{grid-area: title-input;}
         .movie-rating{grid-area: movie-rating;}
         .rating-input{grid-area: rating-input;}
-        .error-message{grid-area:error-message;}
         .grid-footer{grid-area: grid-footer;}
         .grid-container{
             display:grid;
             grid-template-areas:
-            'grid-header  grid-header'
+'grid-header  grid-header'
             'movie-title title-input'
             'movie-rating rating-input'
-            'error-message error-message'
             'grid-footer grid-footer';
             border: 1px solid black;
             text-align: center;
         }
         .grid-container >div{border: 1px solid black; text-align: center}
         .grid-container input[type ="text"]{width:98%; margin:  2px 0;}
-
     </style>
 </head>
 <body>
@@ -64,27 +79,26 @@
     <form method="post">
         <div class="grid-container">
             <div class="grid-header">
-                <h3>Add new movie</h3>
+                <h3>Update Movie</h3>
             </div>
 
             <div class="movie-title">
                 <label for="txtTitle">Movie Title</label>
             </div>
             <div class="title-input">
-                <input type="text" name="txtTitle" id="txtTitle">
+                <input type="text" name="txtTitle" id="txtTitle" value="<?=$movieTitle;?>">
             </div>
 
             <div class="movie-rating">
                 <label for="txtRating">Rating</label>
             </div>
             <div class="rating-input">
-                <input type="text" name="txtRating" id="txtRating">
+                <input type="text" name="txtRating" id="txtRating" value="<?=$movieRating;?>" >
             </div>
-            <div class="error-message <?PHP echo $errorMessage == "" ? "hidden" : ""?>">
-                <p><?=$errorMessage;?></p>
-            </div>
+
             <div class="grid-footer">
-                <input type="submit" value="Add Movie">
+                <input type="submit" value="Update Movie">
+                <input type="button" value="Delete Movie" id="delete">
             </div>
         </div>
     </form>
@@ -92,5 +106,12 @@
 <footer>
     <?php include '../includes/footer.php';?>
 </footer>
+<script>
+   //Java
+    const deleteButton = document.querySelector('#delete')
+    deleteButton.addEventListener('click',() => {
+        window.location = './delete.php?id=<?=$movieID?>'
+    })
+</script>
 </body>
 </html>
