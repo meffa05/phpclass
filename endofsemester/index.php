@@ -10,14 +10,18 @@ $now = time();
 $endOfSem = mktime(12, 0,0,12,20,2025);
 
 $seconds = $endOfSem - $now;
+
 $years = floor($seconds/$secPerYear);
-$seconds = $seconds -($years *$secPerYear);
+$seconds = $seconds -($years * $secPerYear);
+
 $days = floor($seconds/$secPerDay);
-$seconds =$seconds -($days -$secPerDay);
+$seconds =$seconds -($days * $secPerDay);
+
 $hours = floor($seconds/$secPerHour);
-$seconds =$seconds -($days -$secPerHour);
-$minutes = floor($days -$secPerMin);
-$seconds =$seconds -($days -$secPerMin);
+$seconds =$seconds -($hours * $secPerHour);
+
+$minutes = floor($seconds/$secPerMin);
+$seconds =$seconds -($minutes * $secPerMin);
 
 
 
@@ -42,7 +46,7 @@ $seconds =$seconds -($days -$secPerMin);
 <main>
     <div >
     <h1>End Of Semester</h1>
-    <h3><?=$endOfSem?></h3>
+    <h3>Years: <?=$years?> | Days:<?=$days?> | Hours:<?=$hours?> | Minutes:<?=$minutes?> | Seconds:<?=$seconds?></h3>
     </div>
 </main>
 <footer>
