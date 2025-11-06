@@ -4,6 +4,7 @@ $error="";
 if(!isset($_SESSION["UID"])){//making sure the user is logged in, if not it redirects to the index page
     header("Location:index.php");
 }
+//update this as part of the assignment
 if(isset($_POST["btnSubmit"])){//if html for was submitted using the post method and the btnSubmit was clicked
     if(!empty($_POST["txtUsername"])){//if the username is not empty
         $Username = $_POST["txtUsername"];//set username equal to the value of the txtUsername
