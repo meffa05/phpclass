@@ -6,6 +6,8 @@ $isMagic8Ball = $_SERVER['REQUEST_URL'] =='/Magic8Ball/' ? 'selected' : '';
 $ismovielist = $_SERVER['REQUEST_URL'] =='/movielist/' ? 'selected' : '';
 $isendofsemester = $_SERVER['REQUEST_URL'] =='/endofsemester/' ? 'selected' : '';
 $iscustomerdb = $_SERVER['REQUEST_URL'] == '/customerdb/' ? 'selected' : '';
+$isadminlogin = $_SERVER['REQUEST_URL'] == '/login/' ? 'selected' : '';
+$ismemberlogin = $_SERVER['REQUEST_URL'] == '/login/' ? 'selected' : '';
 ?>
 <ul>
     <li><a href="/index.php">Home</a></li>
@@ -15,4 +17,7 @@ $iscustomerdb = $_SERVER['REQUEST_URL'] == '/customerdb/' ? 'selected' : '';
     <li><a href="/movielist">Movie List</a><?=$ismovielist?></li>
     <li><a href="/endofsemester">End Of Semester Countdown</a><?=$isendofsemester?></li>
     <li><a href="/customerdb">Customer Database</a></li>
+    <li><a href="/login">Admin Login</a><?=$isadminlogin?></li>
+    <li><a href="/login">Member Login</a><?=$ismemberlogin?></li>
+
 </ul>
