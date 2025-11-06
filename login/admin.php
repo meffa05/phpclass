@@ -4,11 +4,10 @@ $error="";
 if(!isset($_SESSION["UID"])){//making sure the user is logged in, if not it redirects to the index page
     header("Location:index.php");
 }
-//update this as part of the assignment
-if(isset($_POST["btnSubmit"])){//if html for was submitted using the post method and the btnSubmit was clicked
+if(isset($_POST["btnSubmit"])){//if html form was submit using the post method
     if(!empty($_POST["txtUsername"])){//if the username is not empty
-        $Username = $_POST["txtUsername"];//set username equal to the value of the txtUsername
 
+        $Username=$_POST["txtUsername"];//set username equal to the value of the txtUsername
     }
     else{
         $err="Required Username";//else throw the error
@@ -145,9 +144,21 @@ if(isset($_POST["btnSubmit"])){//if html for was submitted using the post method
             </div>
             <div class="role-input">
                 <select name="txtRole" id="txtRole" value="<?=$Role?>">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <?php
+                    include"../includes/db.php";
+                    $con = getDBconnection();
+                    $result =mysqli_query($con, "SELECT * FROM role");
+
+                    while($row = mysqli_fetch_array($result)){
+
+
+                        $roleValue = $row["roleValue"];
+
+                        //echo "<tr>";
+                        //echo "   <td>$roleValue</td>";
+                       // echo " </tr>";
+                    }
+                    ?>
                 </select>
             </div>
             <div class="email">

@@ -29,7 +29,7 @@ if($question != ''){
         $answer = "Question must end with a question mark. Try Again.";
     }
     else if($question == $_SESSION['question']){
-    $answer = "Ask a different question";
+        $answer = "Ask a different question";
     }
     else {
 

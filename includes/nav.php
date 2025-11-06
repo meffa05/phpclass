@@ -8,6 +8,7 @@ $isendofsemester = $_SERVER['REQUEST_URL'] =='/endofsemester/' ? 'selected' : ''
 $iscustomerdb = $_SERVER['REQUEST_URL'] == '/customerdb/' ? 'selected' : '';
 $isadminlogin = $_SERVER['REQUEST_URL'] == '/login/' ? 'selected' : '';
 $ismemberlogin = $_SERVER['REQUEST_URL'] == '/login/' ? 'selected' : '';
+$isdice = $_SERVER['REQUEST_URL'] == '/dice/' ? 'selected' : '';
 ?>
 <ul>
     <li><a href="/index.php">Home</a></li>
@@ -19,5 +20,6 @@ $ismemberlogin = $_SERVER['REQUEST_URL'] == '/login/' ? 'selected' : '';
     <li><a href="/customerdb">Customer Database</a></li>
     <li><a href="/login">Admin Login</a><?=$isadminlogin?></li>
     <li><a href="/login">Member Login</a><?=$ismemberlogin?></li>
+    <li><a href="/dice">Dice Assignment</a><?=$isdice?></li>
 
 </ul>
