@@ -4,13 +4,13 @@ $error="";
 if(!isset($_SESSION["UID"])){//making sure the user is logged in, if not it redirects to the index page
     header("Location:index.php");
 }
-if(isset($_POST["btnSubmit"])){//if html form was submit using the post method
+if(isset($_POST["btnSubmit"])){//if html form was su
     if(!empty($_POST["txtUsername"])){//if the username is not empty
 
         $Username=$_POST["txtUsername"];//set username equal to the value of the txtUsername
     }
     else{
-        $err="Required Username";//else throw the error
+        $error="Required Username";//else throw the error
     }
     if(!empty($_POST["txtPassword"])){
 
@@ -147,18 +147,17 @@ if(isset($_POST["btnSubmit"])){//if html form was submit using the post method
                     <?php
                     include"../includes/db.php";
                     $con = getDBconnection();
-                    $result =mysqli_query($con, "SELECT * FROM role");
+                    $result =mysqli_query($con, "SELECT roleValue, roleID FROM role");
 
                     while($row = mysqli_fetch_array($result)){
 
-
                         $roleValue = $row["roleValue"];
+                        $roleID = $row["roleID"];
 
-                        //echo "<tr>";
-                        //echo "   <td>$roleValue</td>";
-                       // echo " </tr>";
+                        echo "   <option value='$roleID'>$roleValue</option>";
                     }
                     ?>
+
                 </select>
             </div>
             <div class="email">
