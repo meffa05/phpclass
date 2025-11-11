@@ -51,6 +51,7 @@ $cValue3 = getValue($cRoll3);
 //add them together
 $ComputerTotal = $cValue3 + $cValue1 + $cValue2;
 
+//what ti print out in the wimmer tag
 if($ComputerTotal > $playerTotal)
 {
     $Winner = "Computer Wins!";
