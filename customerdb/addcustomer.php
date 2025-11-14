@@ -12,12 +12,12 @@ if(!empty($_POST["txtFirstName"]) && !empty($_POST["txtLastName"])){
     $txtPhone = $_POST["txtPhone"];
     $txtEmail = $_POST["txtEmail"];
     $txtPassword = $_POST["txtPassword"];
-
+    $MemberKey=sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     try {
-
-        $query = "INSERT INTO customerdb ( FirstName, LastName, Address, City, State, Zip, Phone, Email, Password) VALUES (?,?,?,?,?,?,?,?,?);";
+        $hashedPW=md5($txtPassword.$MemberKey);//variable for hashed password
+        $query = "INSERT INTO customerdb ( FirstName, LastName, Address, City, State, Zip, Phone, Email, Password, MemberKey) VALUES (?,?,?,?,?,?,?,?,?,?);";
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sssssssss", $txtFirstName, $txtLastName,$txtAddress, $txtCity, $txtState, $txtZip, $txtPhone, $txtEmail, $txtPassword);
+        mysqli_stmt_bind_param($stmt, "ssssssssss", $txtFirstName, $txtLastName,$txtAddress, $txtCity, $txtState, $txtZip, $txtPhone, $txtEmail, $hashedPW, $MemberKey);
         mysqli_stmt_execute($stmt);
 
         header("Location: /customerdb");//will not work if and info has been sent back to the user
