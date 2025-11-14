@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $msg="";
     if(!empty($_POST["txtEmail"])) {
         if (!empty($_POST["txtPassword"])) {
             $Email = $_POST["txtEmail"];
