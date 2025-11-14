@@ -1,4 +1,9 @@
-<!doctype html>
+<?php
+$error="";
+if(isset($_SESSION["roleID"])){
+    header("Location:index.php");
+}
+?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

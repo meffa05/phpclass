@@ -1,26 +1,43 @@
 <?php
     session_start();
-
-    $errorMessage="";
-    if(!empty($_POST["txtUsername"])) {
+    $msg="";
+    if(!empty($_POST["txtEmail"])) {
         if (!empty($_POST["txtPassword"])) {
+            $Email = $_POST["txtEmail"];
+            $Password= $_POST["txtPassword"];
 
 
-            $Username = $_POST["txtUsername"];
-            $Password = $_POST["txtPassword"];
-            if($Username =="admin" && $Password=="p@ss"){
-                $_SESSION["UID"]=1;
-                header("Location:admin.php");
+            include "../includes/db.php";
+            $con=getDBconnection();
+            $query = "SELECT memberID, memberPassword, roleID, memberKey from memberLogin where memberEmail =?";
+            $stmt = mysqli_prepare($con, $query);
+            mysqli_stmt_bind_param($stmt, "s", $Email);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_array($result);
 
+            if($row!=null){
+                $DBPass=$row["memberPassword"];
+                $MemberKey=$row["memberKey"];
+                $Password=md5($Password.$MemberKey);
+
+                if($Password==$DBPass){
+                    $_SESSION["roleID"]=$row["roleID"];
+                    $_SESSION["UID"]=$row["memberID"];
+                    if($row["roleID"]==1){
+                        header("Location:admin.php");
+                    }
+                    else{
+                        header("Location:member.php");
+                    }
+                }
+                else{
+                    $msg="Sorry wrong Username or Password";
+                }
             }
             else{
-                if($Username =="member" && $Password=="p@ss"){
-                    header("Location:member.php");
-                }
-
-                $msg="Sorry, Wrong Password or Username";
+                $msg="Sorry wrong Username or Password";
             }
-
         }
     }
 
@@ -73,10 +90,10 @@
             </div>
 
             <div class="username">
-                <label for="txtUsername">Username</label>
+                <label for="txtEmail">Email Address</label>
             </div>
             <div class="username-input">
-                <input type="text" name="txtUsername" id="txtUsername">
+                <input type="text" name="txtEmail" id="txtEmail">
             </div>
 
             <div class="password">

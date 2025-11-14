@@ -1,10 +1,13 @@
 <?php
 session_start();
+
+$MemberKey=sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+
 $error="";
-if(!isset($_SESSION["UID"])){//making sure the user is logged in, if not it redirects to the index page
-    header("Location:index.php");
+if($_SESSION["roleID"]!=1){//if the user is not an admin(roleID 1), kick them back to the homepage
+   header("Location:index.php");
 }
-if(isset($_POST["btnSubmit"])){//if html form was su
+if(isset($_POST["btnSubmit"])){
     if(!empty($_POST["txtUsername"])){//if the username is not empty
 
         $Username=$_POST["txtUsername"];//set username equal to the value of the txtUsername
@@ -43,13 +46,14 @@ if(isset($_POST["btnSubmit"])){//if html form was su
         $error="Required Email";
     }
     if($error==""){
-        $memberKey="XXXXXXXX";
+        ;
 
             include "../includes/db.php";
+            $hashedPaWD=md5($Password.$MemberKey);
         $con=getDBconnection();
             $query = "INSERT INTO memberLogin (memberName, memberPassword, roleID, memberEmail, memberKey) VALUES (?,?,?,?,?);";
             $stmt = mysqli_prepare($con, $query);
-            mysqli_stmt_bind_param($stmt, "sssss", $Username, $Password, $Role, $Email, $memberKey);
+            mysqli_stmt_bind_param($stmt, "sssss", $Username, $hashedPaWD, $Role, $Email, $MemberKey);
             mysqli_stmt_execute($stmt);
 
 
@@ -57,11 +61,11 @@ if(isset($_POST["btnSubmit"])){//if html form was su
         $Username= "";
         $Password="";
         $Password2="";
-        $Role="";
         $Email="";
         $error="Member Added Database";
     }
 }
+//issues: after the customer is submitted role options disappearing, email field not showing up, and submitting the customer a second time when the page is refreshed.
 ?>
 <!doctype html>
 <html lang="en">
