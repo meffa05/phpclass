@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>Marathon Master Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
+            <a class="navbar-brand topnav" href="#">Marathon Master</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -73,20 +73,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <h1>Landing Page</h1>
-                    <h3>A Template by Start Bootstrap</h3>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                        <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li>
-                    </ul>
+                    <h1>Marathon Master</h1>
+                    <h3>Software that just runs!</h3>
+
                 </div>
             </div>
         </div>
@@ -107,11 +96,11 @@
             <div class="col-lg-5 col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                <h2 class="section-heading">Quick and Easy Software Management</h2>
+                <p class="lead">Quick and easy software management is at your fingertips! Here you can easily manage your software without the hassle. Managing software has never been easier.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="img/ipad.png" alt="">
+                <img class="img-responsive" src="img/SoftwareManagement.jpg" alt="">
             </div>
         </div>
 
@@ -129,11 +118,11 @@
             <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                <h2 class="section-heading">Easy Access APIs</h2>
+                <p class="lead"> Signing up for Marathons has never been easier. With these API resources, runners can be signed up within seconds.</p>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <img class="img-responsive" src="img/dog.png" alt="">
+                <img class="img-responsive" src="img/API.png" alt="">
             </div>
         </div>
 
@@ -151,11 +140,11 @@
             <div class="col-lg-5 col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                <h2 class="section-heading">Cost Effective</h2>
+                <p class="lead">Using our software is a cost effective way to meet your needs. Our products are high quality for a low price. While using the software, satisfaction is guaranteed.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="img/phones.png" alt="">
+                <img class="img-responsive" src="img/CostEffective.jpg" alt="">
             </div>
         </div>
 
@@ -163,29 +152,21 @@
     <!-- /.container -->
 
 </div>
-<!-- /.content-section-a -->
+<!-- /.content-section-d -->
 
-<a  name="contact"></a>
-<div class="banner">
+<div class="content-section-a">
 
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-6">
-                <h2>Connect to Start Bootstrap:</h2>
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Plug and Play Interface</h2>
+                <p class="lead">We offer an interface that can plug and play directly into your site. This feature is a great resource!</p>
             </div>
-            <div class="col-lg-6">
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                    </li>
-                </ul>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <img class="img-responsive" src="img/PlugandPlay.jpg" alt="">
             </div>
         </div>
 
@@ -193,7 +174,8 @@
     <!-- /.container -->
 
 </div>
-<!-- /.banner -->
+<!-- /.content-section-d -->
+
 
 <!-- Footer -->
 <footer>
@@ -217,7 +199,11 @@
                         <a href="#contact">Contact</a>
                     </li>
                 </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                <p class="copyright text-muted small">Copyright &copy; Marathon Assignment 2025. All Rights Reserved</p>
+                <div>
+                    <img id="logos" src="img/MMLogo.PNG" alt="Marathon Master Logo">
+                    <img id="logos" src="img/RunMasterSoftwareLogo.png" alt="Run Master Software Logo">
+                </div>
             </div>
         </div>
     </div>
