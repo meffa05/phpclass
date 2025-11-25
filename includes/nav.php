@@ -19,5 +19,6 @@ $isdice = $_SERVER['REQUEST_URL'] == '/dice/' ? 'selected' : '';
     <li><a href="/login">Admin Login</a><?=$isadminlogin?></li>
     <li><a href="/login">Member Login</a><?=$ismemberlogin?></li>
     <li><a href="/dice">Dice Assignment</a><?=$isdice?></li>
+    <li><a href="/marathon/public" target="_blank">Marathon Website</a></li>
 
 </ul>
