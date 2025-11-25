@@ -10,11 +10,22 @@
     <meta name="author" content="">
 
     <title>Marathon Master Home</title>
+    <?php
+    $err_css="";
+    if(isset($load_error)){
+        $load_error=null;
+        $err_css=" alert alert-danger";
+        echo"<script>document.location.href='#login'</script>";
+    }
+
+
+    ?>
     <style>
         input{
             margin:7px; !important;
             padding:7px;
         }
+
     </style>
 
     <!-- Bootstrap Core CSS -->
@@ -123,6 +134,23 @@
 <div class="content-section-b">
 
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12<?=$err_css?>">
+                <?php
+                    $validation = service('validation');
+                    if($validation->hasError('username')) {
+                        echo $validation->getError('username') . '<br />';
+                    }
+                    if($validation->hasError('password')) {
+                        echo $validation->getError('password') . '<br />';
+                    }
+                    if(isset($error_message)){
+                        echo $error_message;
+                    }
+                ?>
+            </div>
+
+        </div>
         <div class="row">
             <div class="col-sm-6">
                     <h2>Login</h2>
