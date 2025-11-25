@@ -10,6 +10,12 @@
     <meta name="author" content="">
 
     <title>Marathon Master Home</title>
+    <style>
+        input{
+            margin:7px; !important;
+            padding:7px;
+        }
+    </style>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +59,9 @@
                 </li>
                 <li>
                     <a href="#services">Services</a>
+                </li>
+                <li>
+                    <a href="#login">Login</a>
                 </li>
                 <li>
                     <a href="#contact">Contact</a>
@@ -110,7 +119,42 @@
 </div>
 <!-- /.content-section-a -->
 
+<a  name="login"></a>
 <div class="content-section-b">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                    <h2>Login</h2>
+                <?php
+                    echo form_open('http://10.7.66.23/marathon/public/login');
+                    echo form_input('username','','placeholder="Enter Username"')."<br>";
+                    echo form_password('password','','placeholder="Enter Password"')."<br>";
+                    echo form_submit('submit','Login');
+                    echo form_close();
+                ?>
+            </div>
+            <div class="col-sm-6">
+                    <h2>Create Account</h2>
+                <?php
+                echo form_open('http://10.7.66.23/marathon/public/create');
+                echo form_input('username','','placeholder="Enter Username"')."<br>";
+                echo form_password('password','','placeholder="Enter Password"')."<br>";
+                echo form_password('password2','','placeholder="Retype Password"')."<br>";
+                echo form_input('email','','placeholder="Enter Email"')."<br>";
+                echo form_submit('submit','Crete Account');
+                echo form_close();
+                ?>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+<div class="content-section-a">
 
     <div class="container">
 
@@ -132,7 +176,7 @@
 </div>
 <!-- /.content-section-b -->
 
-<div class="content-section-a">
+<div class="content-section-b">
 
     <div class="container">
 
