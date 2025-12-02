@@ -6,29 +6,38 @@ use CodeIgniter\Model;
 
 class Member extends Model
 {
-    public function user_login($email,$password)
+    public function user_login($email,$Password)
     {
 
-        //this is where the errors began
+
         $db=db_connect();
-        $sql="SELECT memberID, memberPassword, roleID, memberKey from memberLogin where memberEmail = ?";
+        $sql="SELECT memberID, memberPassword, roleID, memberKey from memberLogin where memberEmail = ? and roleID = 2";
         $query=$db->query($sql,[$email]);
         $row=$query->getFirstRow();
 
-        if (empty($row)) {
+        if ($row!=null) {
 
+            $DBPass=$row->memberPassword;
+            $MemberKey=$row->memberKey;
+            $Password=md5($Password.$MemberKey);
+
+            if($Password==$DBPass) {
+                return true;
+
+            }
+            else{
+                return false;
+            }
         }
         else {
-
+            return false;
         }
-        //echo $row->memberKey;
-        echo"<br />----";
-        echo $email;
-        echo"<br />";
-        echo $password;
-        exit();
 
-        return true;
+
+
+
+
+
     }
 
 }
