@@ -40,4 +40,21 @@ class Member extends Model
 
     }
 
+    //Create User Assignment
+    public function user_creation( $Username, $Email,$Password)
+    {
+
+                //database connection code
+                $con=getDBconnection();
+                $query = "INSERT INTO memberLogin (memberName,  memberEmail, memberPassword) VALUES (?,?,?);";
+                $stmt = mysqli_prepare($con, $query);
+                mysqli_stmt_bind_param($stmt, "sss", $Username, $Email, $Password);
+                mysqli_stmt_execute($stmt);
+
+
+
+
+    }
+
+
 }
