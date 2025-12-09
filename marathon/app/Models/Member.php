@@ -11,6 +11,7 @@ class Member extends Model
 
 
         $db=db_connect();
+        //in video he has it saying and RoleId = 2 for the query
         $sql="SELECT memberID, memberPassword, roleID, memberKey from memberLogin where memberEmail = ? and roleID = 2";
         $query=$db->query($sql,[$email]);
         $row=$query->getFirstRow();
@@ -22,8 +23,16 @@ class Member extends Model
             $Password=md5($Password.$MemberKey);
 
             if($Password==$DBPass) {
-                return true;
+                //start the session service
+                $this->session = service('session');
+                $this->session->start();
+                //session variables
+                $this->session->set("roleID",$row->roleID);
+                $this->session->set("UID",$row->memberID);
 
+
+                return true;
+                //get header and redirect to admin site
             }
             else{
                 return false;

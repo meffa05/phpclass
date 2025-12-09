@@ -24,7 +24,7 @@ class Admin extends BaseController
         $data=['manage_runners' => 'true'];
         return view("runners_page",$data);
     }
-    public function registration_page(): string //added from week 13 in class work
+    public function registration_form(): string //added from week 13 in class work
     {
         $data=['registration_page' => 'true'];
         return view("registration_page",$data);
