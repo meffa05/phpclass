@@ -61,23 +61,23 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <form role="form">
+                    <form role="form" method="post" action="/marathon/public/add_race">
 
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" placeholder="Enter Name">
+                            <input name="Name" id="Name" type="text" class="form-control" placeholder="Enter Name">
                         </div>
                         <div class="form-group">
                             <label>Location</label>
-                            <input class="form-control" placeholder="Enter Location">
+                            <input name="Location" id="Location" type="text" class="form-control" placeholder="Enter Location">
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" placeholder="Enter Description" rows="3"></textarea>
+                            <textarea name="Description" id="Description" class="form-control" placeholder="Enter Description" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Date</label>
-                            <input class="form-control" placeholder="Enter Date (MM/DD/YY)">
+                            <input name="Date" id="Date" type="datetime-local" class="form-control" placeholder="Enter Date (MM/DD/YY)">
                         </div>
 
                         <button type="submit" class="btn btn-default">Add Marathon</button>

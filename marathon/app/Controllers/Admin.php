@@ -11,6 +11,7 @@ class Admin extends BaseController
         $data=array('index' => 'true');
         return view("admin_page",$data);
     }
+    //Navigation
     public function manage_marathon(): string //added from week 13 in class work
     {
         $Race=new Race();
@@ -32,6 +33,11 @@ class Admin extends BaseController
     {
         $data= array('registration_form' => 'true');
         return view("registration_page",$data);
+    }
+    //Add race
+    public function add_race()
+    {
+        echo "here";
     }
 
 }
