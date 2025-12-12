@@ -37,7 +37,10 @@ class Admin extends BaseController
     //Add race
     public function add_race()
     {
-        echo "here";
+        $Race=new Race();
+        $Race->add_races($this->request->getPost('Name'),$this->request->getPost('Location'),$this->request->getPost('Description'),$this->request->getPost('Date'));
+        header("Location: marathon");
+        exit();
     }
 
 }

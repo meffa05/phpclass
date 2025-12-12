@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <form role="form" method="post" action="/marathon/public/add_race">
+                    <form role="form" method="post" action="add_race" >
 
                         <div class="form-group">
                             <label>Name</label>
