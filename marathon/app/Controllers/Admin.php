@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Race;
+
 class Admin extends BaseController
 {
     public function index(): string
@@ -11,7 +13,9 @@ class Admin extends BaseController
     }
     public function manage_marathon(): string //added from week 13 in class work
     {
+        $Race=new Race();
         $data= array('manage_marathon' => 'true');
+        $data['races'] = $Race->get_races();
         return view("marathon_page",$data);
     }
     public function add_marathon(): string //added from week 13 in class work
