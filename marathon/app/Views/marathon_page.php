@@ -76,13 +76,14 @@
                                 $name = $race['raceName'];
                                 $location = $race['raceLocation'];
                                 $date = $race['raceDateTime'];
+                                $id=$race['raceID'];
                                 $t =strtotime($date);
                                 $date=date('d/m/Y H:i',$t);
                                 echo"<tr>
                                 <td>$name</td>
                                 <td>$location</td>
                                 <td>$date</td>
-                                <td>Edit | Delete</td>
+                                <td>Edit | <a href='delete_race/$id'>Delete</a></td>
                                 </tr>";
                             }
                             ?>

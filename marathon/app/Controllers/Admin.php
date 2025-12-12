@@ -42,5 +42,13 @@ class Admin extends BaseController
         header("Location: marathon");
         exit();
     }
+    //Delete race
+    public function delete_race($id)
+    {
+        $Race=new Race();
+        $Race->delete_races($id);
+        header("Refresh:0; url=/marathon/public/marathon");
+        exit();
+    }
 
 }

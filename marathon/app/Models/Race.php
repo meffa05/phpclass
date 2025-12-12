@@ -28,4 +28,18 @@ public function get_races()
 
 
     }
+    public function delete_races($id)
+    {
+        try{
+            $db=db_connect();
+            $sql="delete FROM race where raceID = ?";
+            $db->query($sql,[$id]);
+            return true;
+        }catch(Exception $ex){
+            return false;
+        }
+
+
+
+    }
 }
