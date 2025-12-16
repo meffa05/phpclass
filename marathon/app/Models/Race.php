@@ -28,7 +28,7 @@ public function get_races()
             $sql="INSERT INTO race (raceName, raceLocation, raceDescription, raceDateTime) values(?,?,?,?)";
             $db->query($sql,[$name, $location, $description, $date]);
             return true;
-        }catch(Exception $ex){
+        }catch(\Exception $ex){
             return false;
         }
 
@@ -42,7 +42,7 @@ public function get_races()
             $sql="delete FROM race where raceID = ?";
             $db->query($sql,[$id]);
             return true;
-        }catch(Exception $ex){
+        }catch(\Exception $ex){
             return false;
         }
 
@@ -56,7 +56,7 @@ public function get_races()
             $sql="UPDATE race set raceName=?, raceLocation=?, raceDescription=?, raceDateTime=? where raceID=?";
             $db->query($sql,[$name, $location, $description, $date,$txtID]);
             return true;
-        }catch(Exception $ex){
+        }catch(\Exception $ex){
             return false;
         }
 

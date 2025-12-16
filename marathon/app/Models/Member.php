@@ -43,30 +43,31 @@ class Member extends Model
         }
 
 
-
-
-
-
     }
 
     //Create User Assignment
-    public function user_creation( $username,$password, $email)
+    public function create_user( $username,$password,$password2, $email)
     {
+        $MemberKey=sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+        $hashedPaWD=md5($password.$MemberKey);
+        //setting role Id to 2 because in Joe's videos he only allows users with roleID 2 to log in
+        $roleID = 2;
+        if($password === $password2) {
+            try {
+                $db = db_connect();
+                $sql = "INSERT INTO memberLogin (memberName, memberEmail, memberPassword,roleID, memberKey) values(?,?,?,?,?)";
+                $db->query($sql, [$username, $email,$hashedPaWD,$roleID,$MemberKey]);
+                return true;
 
-        try{
-            $db=db_connect();
-            $sql = "INSERT INTO memberLogin (memberName, memberPassword, memberEmail) values(?,?,?)";
-            $db->query($sql, [$username, $password, $email]);
-            return true;
-        }catch(\Exception $ex){
+            } catch (\Exception $ex) {
+                return false;
+            }
+        }
+        else {
             return false;
         }
 
 
 
-
-
     }
-
-
 }

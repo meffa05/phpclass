@@ -153,7 +153,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                    <h2>Login</h2>
+                <h2>Login</h2>
                 <?php
                     echo form_open('http://10.7.66.23/marathon/public/login');
                     echo form_input('username','','placeholder="Enter Username"')."<br>";
@@ -163,15 +163,15 @@
                 ?>
             </div>
             <div class="col-sm-6">
-                    <h2>Create Account</h2>
+                <h2>Create Account</h2>
                 <?php
-                echo form_open('http://10.7.66.23/marathon/public/create');
-                echo form_input('username','','placeholder="Enter Username"')."<br>";
-                echo form_password('password','','placeholder="Enter Password"')."<br>";
-                echo form_password('password2','','placeholder="Retype Password"')."<br>";
-                echo form_input('email','','placeholder="Enter Email"')."<br>";
-                echo form_submit('submit','Crete Account');
-                echo form_close();
+                    echo form_open('http://10.7.66.23/marathon/public/create');
+                    echo form_input('username','','placeholder="Enter Full Name"')."<br>";
+                    echo form_password('password','','placeholder="Enter Password"')."<br>";
+                    echo form_password('password2','','placeholder="Retype Password"')."<br>";
+                    echo form_input('email','','placeholder="Enter Email"')."<br>";
+                    echo form_submit('submit','Crete Account');
+                    echo form_close();
                 ?>
             </div>
         </div>
