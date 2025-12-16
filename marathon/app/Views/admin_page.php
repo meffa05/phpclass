@@ -1,19 +1,4 @@
-<?php
-
-$this->session = service('session');
-$this->session->start();
-
-
-if($this->session->get("roleID")==null){
-header("Location: /marathon/public/#login");
-exit();
-}
-
-if($this->session->get("roleID")!=2){
-    header("Location: /marathon/public/#login");
-    exit();
-}
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,7 +9,7 @@ if($this->session->get("roleID")!=2){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Marathon Master - Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

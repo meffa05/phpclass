@@ -68,5 +68,13 @@ class Admin extends BaseController
         exit();
 
     }
+    public function logout()
+    {
+        $this->session = service('session');
+        $this->session->destroy();
+        header("Location: /marathon/public/");
+        exit();
+
+    }
 
 }

@@ -12,7 +12,7 @@ class Member extends Model
 
         $db=db_connect();
         //in video he has it saying and RoleId = 2 for the query
-        $sql="SELECT memberID, memberPassword, roleID, memberKey from memberLogin where memberEmail = ? and roleID = 2";
+        $sql="SELECT * from memberLogin where memberEmail = ? and roleID = 2";
         $query=$db->query($sql,[$email]);
         $row=$query->getFirstRow();
 
@@ -28,7 +28,8 @@ class Member extends Model
                 $this->session->start();
                 //session variables
                 $this->session->set("roleID",$row->roleID);
-                $this->session->set("UID",$row->memberID);
+                $this->session->set("memberKey",$row->memberKey);
+                $this->session->set("memberName",$row->memberName);
 
 
                 return true;
