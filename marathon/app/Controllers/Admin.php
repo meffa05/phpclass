@@ -50,5 +50,23 @@ class Admin extends BaseController
         header("Refresh:0; url=/marathon/public/marathon");
         exit();
     }
+    //Update Race: loading view with the data that needs updating
+    public function update_race($id)
+    {
+        $Race=new Race();
+        $data= array('manage_marathon' => 'true');
+        $data['race'] = $Race->get_race($id);
+
+        return view("update_page",$data);
+
+    }
+    public function edit_race()
+    {
+        $Race=new Race();
+        $Race->update_races($this->request->getPost('Name'),$this->request->getPost('Location'),$this->request->getPost('Description'),$this->request->getPost('Date'),$this->request->getPost('txtID'));
+        header("Location: /marathon/public/marathon");
+        exit();
+
+    }
 
 }

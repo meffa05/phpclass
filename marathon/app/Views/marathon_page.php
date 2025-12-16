@@ -83,7 +83,7 @@
                                 <td>$name</td>
                                 <td>$location</td>
                                 <td>$date</td>
-                                <td>Edit | <a href='delete_race/$id'>Delete</a></td>
+                                <td><a href='update_race/$id'>Edit </a>| <a href='delete_race/$id'>Delete</a></td>
                                 </tr>";
                             }
                             ?>

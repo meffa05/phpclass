@@ -12,13 +12,13 @@
     <title>SB Admin - Bootstrap Admin Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Add Race
+                        Update Race
                     </h1>
 
                 </div>
@@ -61,26 +61,26 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <form role="form" method="post" action="add_race" >
+                    <form role="form" method="post" action="/marathon/public/edit_race" >
 
                         <div class="form-group">
                             <label>Name</label>
-                            <input name="Name" id="Name" type="text" class="form-control" placeholder="Enter Name">
+                            <input name="Name" id="Name" type="text" value="<?=$race[0]['raceName']?>" class="form-control" placeholder="Enter Name">
                         </div>
                         <div class="form-group">
                             <label>Location</label>
-                            <input name="Location" id="Location" type="text" class="form-control" placeholder="Enter Location">
+                            <input name="Location" id="Location" type="text" value="<?=$race[0]['raceLocation']?>" class="form-control" placeholder="Enter Location">
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="Description" id="Description" class="form-control" placeholder="Enter Description" rows="3"></textarea>
+                            <textarea name="Description" id="Description" class="form-control" placeholder="Enter Description" rows="3"><?=$race[0]['raceDescription']?></textarea>
                         </div>
                         <div class="form-group">
                             <label>Date</label>
-                            <input name="Date" id="Date" type="datetime-local" class="form-control" placeholder="Enter Date (MM/DD/YY)">
+                            <input name="Date" id="Date" type="datetime-local" value="<?=$race[0]['raceDateTime']?>" class="form-control" placeholder="Enter Date (MM/DD/YY)">
                         </div>
-
-                        <button type="submit" class="btn btn-default">Add Marathon</button>
+                        <input type="hidden" id="txtID" name="txtID" value="<?=$race[0]['raceID']?>">
+                        <button type="submit" class="btn btn-default">Update Marathon</button>
                         <button type="reset" class="btn btn-default">Reset</button>
 
                     </form>
@@ -100,10 +100,10 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="../js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 </body>
 

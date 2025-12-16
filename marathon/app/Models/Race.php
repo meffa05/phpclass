@@ -14,6 +14,13 @@ public function get_races()
     return $query->getResultArray();
 
 }
+    public function get_race($id)
+    {
+        $db=db_connect();
+        $sql="SELECT * from race where raceID= ?";
+        $query=$db->query($sql,[$id]);
+        return $query->getResultArray();
+    }
     public function add_races($name, $location, $description, $date)
     {
         try{
@@ -34,6 +41,20 @@ public function get_races()
             $db=db_connect();
             $sql="delete FROM race where raceID = ?";
             $db->query($sql,[$id]);
+            return true;
+        }catch(Exception $ex){
+            return false;
+        }
+
+
+
+    }
+    public function update_races($name, $location, $description, $date,$txtID)
+    {
+        try{
+            $db=db_connect();
+            $sql="UPDATE race set raceName=?, raceLocation=?, raceDescription=?, raceDateTime=? where raceID=?";
+            $db->query($sql,[$name, $location, $description, $date,$txtID]);
             return true;
         }catch(Exception $ex){
             return false;
