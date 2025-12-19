@@ -11,13 +11,19 @@ class Member extends Model
     {
         try{
             $db=db_connect();
-            $sql="select R.raceID
-            from race R
-            inner join member_race MR on R.raceID = MR.raceID
-            inner join memberLogin ML on MR.memberID = ML.memberID
-            where ML.memberKey = ?
-            and MR.roleID = '2'
-            and MR.raceID = ?;";
+            //$sql="select R.raceID
+            //from race R
+            //inner join member_race MR on R.raceID = MR.raceID
+           // inner join memberLogin ML on MR.memberID = ML.memberID
+           // where ML.memberKey = ?
+           // and MR.roleID = '2'
+            //and MR.raceID = ?;";
+            $sql = "select ML.memberName, ML.memberEmail, ML.memberID, MR.roleID
+from member_race MR
+         inner join memberLogin ML on MR.memberID = ML.memberID
+where ML.memberKey = ?
+            and MR.raceID =?
+            and MR.roleID = '3';";
             $query=$db->query($sql,[$memberKey,$raceID]);
             $row =$query->getFirstRow();
 
@@ -68,6 +74,32 @@ class Member extends Model
             return false;
         }
 
+
+    }
+    public function add_user($memberID, $raceID)
+    {
+          try {
+                $db = db_connect();
+                $sql = "INSERT INTO member_race (memberID, raceID, roleID) values(?,?,'3')";
+                $db->query($sql, [$memberID,$raceID]);
+                return true;
+
+            } catch (\Exception $ex) {
+                return false;
+            }
+
+    }
+    public function delete_user($memberID, $raceID)
+    {
+        try {
+            $db = db_connect();
+            $sql = "delete from member_race where memberID = ? and raceID =? and roleID = '3'";
+            $db->query($sql, [$memberID,$raceID]);
+            return true;
+
+        } catch (\Exception $ex) {
+            return false;
+        }
 
     }
 

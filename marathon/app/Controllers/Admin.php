@@ -15,10 +15,13 @@ class Admin extends BaseController
     //Navigation
     public function manage_marathon(): string //added from week 13 in class work
     {
-
+        //start the session service
+        $this->session = service('session');
+        $this->session->start();
+        $memberKey = $this->session->get("memberKey");
         $Race=new Race();
         $data= array('manage_marathon' => 'true');
-        $data['races'] = $Race->get_races();
+        $data['races'] = $Race->get_races($memberKey);
         return view("marathon_page",$data);
     }
     public function add_marathon(): string //added from week 13 in class work

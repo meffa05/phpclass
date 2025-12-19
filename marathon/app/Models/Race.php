@@ -6,12 +6,9 @@ use CodeIgniter\Model;
 
 class Race extends Model
 {
-public function get_races()
+public function get_races($memberKey)
 {
-    //start the session service
-    $this->session = service('session');
-    $this->session->start();
-    $memberKey = $this->session->get("memberKey");
+
 
     $db=db_connect();
     $sql="select R.raceID, R.raceName, R.raceLocation, R.raceDescription, R.raceDateTime
@@ -24,6 +21,21 @@ and MR.roleID = '2';";
     return $query->getResultArray();
 
 }
+    public function get_runners($memberKey, $RaceID)
+    {
+
+
+        $db = db_connect();
+        $sql = "select ML.memberName, ML.memberEmail, ML.memberID, MR.roleID
+from member_race MR
+         inner join memberLogin ML on MR.memberID = ML.memberID
+where ML.memberKey = ?
+and MR.raceID =?
+and MR.roleID = '3';";
+        $query = $db->query($sql,[$memberKey, $RaceID]);
+        return $query->getResultArray();
+    }
+
     public function get_race($id)
     {
         $db=db_connect();
